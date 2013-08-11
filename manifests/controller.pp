@@ -130,7 +130,7 @@
 #
 class openstack::controller (
   # Required Network
-  $public_address,
+  $public_address	    = "${ipaddress_eth0}",
   $admin_email,
   # required password
   $admin_password,
@@ -184,7 +184,7 @@ class openstack::controller (
   $enabled_apis            = 'ec2,osapi_compute,metadata',
   $nova_bind_address       = '0.0.0.0',
   # Nova Networking
-  $public_interface        = false,
+  $public_interface        = "${ipaddress_eth1}",
   $private_interface       = false,
   $internal_address        = false,
   $admin_address           = false,
@@ -224,7 +224,7 @@ class openstack::controller (
   $physical_network        = 'default',
   $tenant_network_type     = 'gre',
   $ovs_enable_tunneling    = true,
-  $ovs_local_ip            = false,
+  $ovs_local_ip            = "${ipaddress_eth2}",
   $network_vlan_ranges     = undef,
   $bridge_interface        = undef,
   $external_bridge_name    = 'br-ex',
