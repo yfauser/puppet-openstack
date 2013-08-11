@@ -55,7 +55,7 @@
 # [debug] Whether to log services at debug.
 # [verbose] Whether to log services at verbose.
 # Horizon related config - assumes puppetlabs-horizon code
-# [secret_key]          secret key to encode cookies, …
+# [secret_key]          secret key to encode cookies
 # [cache_server_ip]     local memcached instance ip
 # [cache_server_port]   local memcached instance port
 # [horizon]             (bool) is horizon installed. Defaults to: true
@@ -439,9 +439,9 @@ class openstack::controller (
       fail('neutron_db_password must be set when configuring neutron')
     }
 
-    if ! $bridge_interface {
-      fail('bridge_interface must be set when configuring neutron')
-    }
+#    if ! $bridge_interface {
+#      fail('bridge_interface must be set when configuring neutron')
+#    }
 
     if ! $bridge_uplinks {
       $bridge_uplinks_real = ["${external_bridge_name}:${bridge_interface}"]
