@@ -35,8 +35,8 @@
 #   (optional) Defaults to 'publicURL'.
 #
 class openstack::auth_file(
-  $admin_password,
-  $controller_node          = '127.0.0.1',
+  $admin_password	    = 'OpenStack1!',
+  $controller_node          = inline_template("<% _erbout.concat(Resolv::DNS.open.getaddress('os-controller').to_s) %>"),
   $keystone_admin_token     = 'OpenStack1!',
   $admin_user               = 'admin',
   $admin_tenant             = 'admin',

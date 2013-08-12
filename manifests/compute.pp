@@ -28,14 +28,14 @@
 
 class openstack::compute (
   # Required Network
-  $internal_address		           = "${ipaddress_eth1}",
+  $internal_address		 = "${ipaddress_eth1}",
   # Required Nova
   $nova_user_password            = 'OpenStack1!',
   # Required Rabbit
   $rabbit_password               = 'OpenStack1!',
   # DB
   $nova_db_password              = 'OpenStack1!',
-  $db_host                       = '127.0.0.1',
+  $db_host                       = inline_template("<% _erbout.concat(Resolv::DNS.open.getaddress('os-controller').to_s) %>"),
   # Nova Database
   $nova_db_user                  = 'nova',
   $nova_db_name                  = 'nova',
@@ -56,8 +56,8 @@ class openstack::compute (
   $enable_l3_agent               = false,
   $enable_dhcp_agent             = false,
   $quantum_auth_url              = 'http://127.0.0.1:35357/v2.0',
-  $keystone_host                 = '127.0.0.1',
-  $quantum_host                  = '127.0.0.1',
+  $keystone_host                 = inline_template("<% _erbout.concat(Resolv::DNS.open.getaddress('os-controller').to_s) %>"),
+  $quantum_host                  = inline_template("<% _erbout.concat(Resolv::DNS.open.getaddress('os-controller').to_s) %>"),
   $ovs_enable_tunneling          = true,
   $ovs_local_ip                  = "${ipaddress_eth2}",
   $quantum_firewall_driver       = false,
@@ -69,12 +69,12 @@ class openstack::compute (
   $purge_nova_config             = false,
   $libvirt_vif_driver            = 'nova.virt.libvirt.vif.LibvirtGenericVIFDriver',
   # Rabbit
-  $rabbit_host                   = '127.0.0.1',
+  $rabbit_host                   = inline_template("<% _erbout.concat(Resolv::DNS.open.getaddress('os-controller').to_s) %>"),
   $rabbit_hosts                  = false,
   $rabbit_user                   = 'openstack',
   $rabbit_virtual_host           = '/',
   # Glance
-  $glance_api_servers            = false,
+  $glance_api_servers            = inline_template("<% _erbout.concat(Resolv::DNS.open.getaddress('os-controller').to_s) %>"),
   # Virtualization
   $libvirt_type                  = 'kvm',
   # VNC

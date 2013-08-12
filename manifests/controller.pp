@@ -145,8 +145,8 @@ class openstack::controller (
   $mysql_root_password     = 'OpenStack1!',
   # cinder and quantum password are not required b/c they are
   # optional. Not sure what to do about this.
-  $quantum_user_password   = false,
-  $quantum_db_password     = false,
+  $quantum_user_password   = 'OpenStack1!',
+  $quantum_db_password     = 'OpenStack1!',
   $quantum_core_plugin     = undef,
   $cinder_user_password    = false,
   $cinder_db_password      = false,
@@ -234,7 +234,7 @@ class openstack::controller (
   $enable_dhcp_agent       = true,
   $enable_l3_agent         = true,
   $enable_metadata_agent   = true,
-  $metadata_shared_secret  = false,
+  $metadata_shared_secret  = 'OpenStack1!',
   $firewall_driver         = 'quantum.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver',
   $quantum_db_user         = 'quantum',
   $quantum_db_name         = 'quantum',
