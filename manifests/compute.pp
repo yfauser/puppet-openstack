@@ -28,13 +28,13 @@
 
 class openstack::compute (
   # Required Network
-  $internal_address		 = "${ipaddress_eth1}",
+  $internal_address		           = "${ipaddress_eth1}",
   # Required Nova
-  $nova_user_password,
+  $nova_user_password            = 'OpenStack1!',
   # Required Rabbit
-  $rabbit_password,
+  $rabbit_password               = 'OpenStack1!',
   # DB
-  $nova_db_password,
+  $nova_db_password              = 'OpenStack1!',
   $db_host                       = '127.0.0.1',
   # Nova Database
   $nova_db_user                  = 'nova',
@@ -49,7 +49,7 @@ class openstack::compute (
   $enabled_apis                  = 'ec2,osapi_compute,metadata',
   # Quantum
   $quantum                       = true,
-  $quantum_user_password         = false,
+  $quantum_user_password         = 'OpenStack1!',
   $quantum_admin_tenant_name     = 'services',
   $quantum_admin_user            = 'quantum',
   $enable_ovs_agent              = true,
@@ -79,10 +79,10 @@ class openstack::compute (
   $libvirt_type                  = 'kvm',
   # VNC
   $vnc_enabled                   = true,
-  $vncproxy_host                 = undef,
-  $vncserver_listen              = false,
+  $vncproxy_host                 = "${ipaddress_eth1}",
+  $vncserver_listen              = "${ipaddress_eth1}",
   # cinder / volumes
-  $manage_volumes                = true,
+  $manage_volumes                = false,
   $cinder_volume_driver          = 'iscsi',
   $cinder_db_password            = false,
   $cinder_db_user                = 'cinder',

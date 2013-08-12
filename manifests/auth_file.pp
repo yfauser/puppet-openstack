@@ -37,7 +37,7 @@
 class openstack::auth_file(
   $admin_password,
   $controller_node          = '127.0.0.1',
-  $keystone_admin_token     = undef,
+  $keystone_admin_token     = 'OpenStack1!',
   $admin_user               = 'admin',
   $admin_tenant             = 'admin',
   $region_name              = 'RegionOne',

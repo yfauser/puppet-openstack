@@ -130,19 +130,19 @@
 #
 class openstack::controller (
   # Required Network
-  $public_address	    = "${ipaddress_eth0}",
-  $admin_email,
+  $public_address	         = "${ipaddress_eth0}",
+  $admin_email             = 'yfauser@vmware.com',
   # required password
-  $admin_password,
-  $rabbit_password,
-  $keystone_db_password,
-  $keystone_admin_token,
-  $glance_db_password,
-  $glance_user_password,
-  $nova_db_password,
-  $nova_user_password,
-  $secret_key,
-  $mysql_root_password,
+  $admin_password          = 'OpenStack1!',
+  $rabbit_password         = 'OpenStack1!',
+  $keystone_db_password    = 'OpenStack1!',
+  $keystone_admin_token    = 'OpenStack1!',
+  $glance_db_password      = 'OpenStack1!',
+  $glance_user_password    = 'OpenStack1!',
+  $nova_db_password        = 'OpenStack1!',
+  $nova_user_password      = 'OpenStack1!',
+  $secret_key              = '12345',
+  $mysql_root_password     = 'OpenStack1!',
   # cinder and quantum password are not required b/c they are
   # optional. Not sure what to do about this.
   $quantum_user_password   = false,
@@ -184,9 +184,9 @@ class openstack::controller (
   $enabled_apis            = 'ec2,osapi_compute,metadata',
   $nova_bind_address       = '0.0.0.0',
   # Nova Networking
-  $public_interface        = "${ipaddress_eth1}",
+  $public_interface        = 'eth0',
   $private_interface       = false,
-  $internal_address        = false,
+  $internal_address        = "${ipaddress_eth1}",
   $admin_address           = false,
   $network_manager         = 'nova.network.manager.FlatDHCPManager',
   $fixed_range             = '10.0.0.0/24',
@@ -215,7 +215,7 @@ class openstack::controller (
   $verbose                 = false,
   # cinder
   # if the cinder management components should be installed
-  $cinder                  = true,
+  $cinder                  = false,
   $cinder_db_user          = 'cinder',
   $cinder_db_dbname        = 'cinder',
   $cinder_bind_address     = '0.0.0.0',
