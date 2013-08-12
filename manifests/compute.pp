@@ -28,7 +28,7 @@
 
 class openstack::compute (
   # Required Network
-  $internal_address,
+  $internal_address		 = "${ipaddress_eth1}",
   # Required Nova
   $nova_user_password,
   # Required Rabbit
@@ -59,7 +59,7 @@ class openstack::compute (
   $keystone_host                 = '127.0.0.1',
   $quantum_host                  = '127.0.0.1',
   $ovs_enable_tunneling          = true,
-  $ovs_local_ip                  = false,
+  $ovs_local_ip                  = "${ipaddress_eth2}",
   $quantum_firewall_driver       = false,
   $bridge_mappings               = undef,
   $bridge_uplinks                = undef,
