@@ -106,8 +106,7 @@ class openstack::compute (
   }
 
   if $vncserver_listen {
-    $vncserver_listen_real = $vncserver_listen
-  } else {
+    $vncserver_listen_real = $vncserver_listen } else {
     $vncserver_listen_real = $internal_address
   }
 
@@ -131,7 +130,7 @@ class openstack::compute (
     rabbit_userid       => $rabbit_user,
     rabbit_password     => $rabbit_password,
     image_service       => 'nova.image.glance.GlanceImageService',
-    glance_api_servers  => $glance_api_servers,
+    glance_api_servers  => "${glance_api_servers}:9292",
     verbose             => $verbose,
     rabbit_host         => $rabbit_host,
     rabbit_hosts        => $rabbit_hosts,
